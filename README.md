@@ -17,11 +17,11 @@
 ## 1. Rational Agent 
 Different people approach AI with different goals in mind. Here the main question is do you want to model humans or try to achieve the optimal results? 
 According to what we call the standard model, AI is concerned mainly with rational agent which takes the best possible action in a situation. A rational agent is any entity that can perceive its environment through sensors and acts upon that environment using actuators. The key characteristic of a rational agent is its ability to make decisions or choose actions that maximize its chances of achieving a certain goal or set of goals. Rationality, in this context, means that given a set of perceptions and a knowledge base, the agent will perform an action that is expected to bring about the best outcome according to a specific performance measure. This measure can vary depending on the agent's objectives, such as maximizing utility, minimizing cost, or achieving a particular state.
-Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems. They can operate in a variety of environments and are designed to optimize their performance based on the principles of rationality, which involve selecting the best available option considering the given information and any constraints.
+Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems.
 
 <a name="environment"></a>
 ## 2. Environment
-The entire universe could be considered as the environment, but practically speaking, it's only the part of the universe around the agent that can influence or be influenced by what the agent's actions. Environments can be physical, like a robot navigating a room, or virtual, like a software agent operating within a computer system. They can also vary in terms of their properties such as being predictable or unpredictable. The complexity of an agent's behavior and its decision-making process are often directly related to the complexity of its environment. Understanding the environment is crucial for designing an agent that can effectively achieve its goals within that context.
+The entire universe could be considered as the environment, but practically speaking, it's only the part of the universe around the agent that can influence or be influenced by the agent's actions. Environments can be physical, like a robot navigating a room, or virtual, like a software agent operating within a computer system. They can also vary in terms of their properties such as being predictable or unpredictable. The complexity of an agent's behavior and its decision-making process are often directly related to the complexity of its environment. Understanding the environment is crucial for designing an agent that can effectively achieve its goals within that context.
 
 
 <a name="search"></a>
@@ -40,5 +40,14 @@ A search problem can be defined formally as follows:
 A search algorithm takes a search problem as input and returns either a solution, or indication of failure. In this project, I utilized search tree over the state space graph. Each node in this tree represents a cell in the maze, and the connections between nodes (edges) represent the possible moves. The root of the tree represents the problem's initial state.
 
 ![(1, 1)](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/98fbb387-0ca7-466d-96ca-6ff5ccabbf20)
+
+Throughout the project's development, two distinct strategies were applied to systematically expand from the current state towards discovering new states until the goal was achieved. 
+The first strategy is **Uninformed Search** also known as blind search. In these strategy, the agent do not have additional information about states beyond the current state. I utilized two algorithms which search through the state space using this strategy:
+* 1- Breadth-First Search (BFS): This algorithm explores the state space level by level, expanding all states at a given depth before moving to the next level. It guarantees finding the shortest path in terms of the number of steps.
+* 2- Depth-First Search (DFS): This algorithm explores as far as possible along each branch before backtracking. It's memory-efficient but doesn't guarantee the shortest path.
+![DFS & BFS](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/3dee7b5e-9ade-49e7-8643-e24a9a7a480a)
+
+The second strategy is **Informed Search** also known as heuristic search.
+
 
 
