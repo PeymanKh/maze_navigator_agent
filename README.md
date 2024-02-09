@@ -17,4 +17,5 @@ According to what we call the standard model, AI is concerned mainly with ration
 Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems. They can operate in a variety of environments and are designed to optimize their performance based on the principles of rationality, which involve selecting the best available option considering the given information and any constraints.
 
 <a name="environment"></a>
-## Environments
+## Environment
+The entire universe could be considered as the environment, but practically speaking, it's only the part of the universe around the agent that can influence or be influenced by what the agent's actions. Environments can be physical, like a robot navigating a room, or virtual, like a software agent operating within a computer system. They can also vary in terms of their properties such as being predictable or unpredictable. 
