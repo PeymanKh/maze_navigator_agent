@@ -43,21 +43,27 @@ A search algorithm takes a search problem as input and returns either a solution
 ![(1, 1)](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/98fbb387-0ca7-466d-96ca-6ff5ccabbf20)
 
 
-Throughout the project's development, two distinct strategies were applied to systematically expand from the current state towards discovering new states until the goal was achieved. The first strategy is Uninformed Search, also known as blind search. In this strategy, the agent does not have additional information about states beyond the current state. I utilized two algorithms which search through the state space using this strategy:
+Throughout the project's development, two distinct search strategies were applied to systematically expand from the current state towards discovering new states until the goal was achieved. The first strategy, Uninformed Search (also known as blind search), relies on the absence of additional information about the state space beyond the current state. This strategy encompasses two primary algorithms:
 
-* 1- Breadth-First Search (BFS): This algorithm explores the state space level by level, expanding all states at a given depth before moving to the next level. It guarantees finding the shortest path in terms of the number of steps.
-* 2- Depth-First Search (DFS): This algorithm explores as far as possible along each branch before backtracking. It's memory-efficient but doesn't guarantee the shortest path.
+
+1. Breadth-First Search (BFS): BFS operates by exploring the state space horizontally, processing all states at a certain depth before proceeding to states at the next level of depth. This methodical approach ensures that the shortest path, in terms of the number of steps taken, is identified. This characteristic of BFS makes it particularly useful in scenarios where the path length to the goal is of primary concern, as it guarantees the discovery of the shortest path if one exists.
+
+2. Depth-First Search (DFS): In contrast, DFS delves deep into the state space, prioritizing the exploration of as far along each branch as possible before resorting to backtracking. This approach is known for its memory efficiency, as it does not require storing all expanded nodes at a given depth, unlike BFS. However, the trade-off is that DFS does not inherently guarantee finding the shortest path to the goal. Its tendency to explore deep into the state space without regard for proximity to the goal can lead to finding a solution that, while valid, may not be optimal in terms of path length.
+
+
+> DFS is favored for its lower memory usage, as it does not require storing all sibling nodes at each level to navigate a path, making it ideal for problems with deep solution paths or vast state spaces. In contrast, BFS excels in situations where finding the shortest path is paramount due to its systematic level-by-level exploration, albeit at a higher memory cost. The selection between DFS and BFS hinges on the application's specific needs: BFS is the go-to for scenarios where the shortest path is essential, while DFS is better suited for cases with unknown solution depths or extensive search spaces.
+
+
 ![DFS & BFS](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/3dee7b5e-9ade-49e7-8643-e24a9a7a480a)
 
-The second strategy is Informed Search, also known as heuristic search. Within this approach, the agent utilizes additional knowledge about the state space to efficiently find the solution. Unlike uninformed search strategies that explore the search space without any direction, informed strategies use heuristics to guide the search process towards the goal more quickly. A* (A_star) is a widely used informed search algorithm that estimates the cost of reaching the goal with a heuristic function.
+The second strategy is Informed Search, also known as heuristic search. Within this approach, the agent utilizes additional knowledge about the state space to efficiently find the solution. Unlike uninformed search strategies that explore the search space without any direction, informed strategies use heuristics to guide the search process towards the goal more quickly. The A* (A_star) algorithm represents a significant advancement in informed search strategies by leveraging heuristic functions to efficiently navigate towards the goal state. Unlike uninformed search methods that indiscriminately explore the search space, A* incorporates additional information through two key cost functions:
 
-- g(n):  The cost of the path from the start node to node n.
-- h(n): The heuristic estimate of the cost from n to the closest goal node. This is where A* integrates knowledge about the problem domain.
-- f(n) = g(n) + h(n): The total estimated cost of the cheapest solution through n. A* uses this function to prioritize which node to explore next.
+- g(n):  This function calculates the cost of the path from the start node to the current node n. It ensures that the path taken to reach n is accounted for in the decision-making process, providing a basis for understanding the accrued cost of the journey thus far.
+- h(n): The heuristic function estimates the cost from node n to the closest goal node. It's here that A* differentiates itself by integrating domain-specific knowledge to make educated guesses about the remaining path cost. This heuristic is crucial for guiding the search more directly towards the goal, significantly improving search efficiency by avoiding less promising paths.
+- f(n) = g(n) + h(n): f(n) represents the total estimated cost of the cheapest solution passing through node n. A* uses this function to prioritize which nodes to explore next, favoring those with the lowest f(n) values. This prioritization ensures that A* systematically focuses on paths that are more likely to lead to the goal efficiently,
 
 
-The Manhattan distance between two points \((x_1, y_1)\) and \((x_2, y_2)\) in a grid-based path is calculated as:
-
+My heuristic in this project is the Manhattan distance for calculating the distance between two points \((x_1, y_1)\) and \((x_2, y_2)\)in a grid-based path, which is calculated as:
 
 **$$
 d = |x_2 - x_1| + |y_2 - y_1|
@@ -70,6 +76,8 @@ where:
 - \((x_2, y_2)\) are the coordinates of the second point.
 
 This formula computes the sum of the absolute differences of their Cartesian coordinates. It's an effective heuristic for grid-based mazes where movement is restricted to orthogonal directions (right, left, up, and down) because it accurately reflects the minimum number of steps required to move from one point to another without considering any potential obstacles that might be present.
+
+> The effectiveness of A* depend on the heuristic function h(n). an accurate h(n) can dramatically reduce the search space, allowing A* to find the optimal path more quickly than uninformed search algorithms. However, the choice of h(n) s crucial; an overly optimistic heuristic can lead to inefficient searches, while a pessimistic one may not provide sufficient guidance to improve upon uninformed strategies. The beauty of A* lies in its flexibility and the balance it strikes between exploring unvisited nodes and extending paths from known nodes, making it highly effective for a wide range of problems where the goal is to find the most cost-effective path.
 
 <a name="module"></a>
 ## 5. Modules Overview
