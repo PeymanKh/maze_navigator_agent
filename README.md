@@ -9,6 +9,7 @@
 - [2. Environment](#environment)
 - [3. Search Problem](#search)
 - [4. Search Algorithms](#algorithms)
+- [5. Modules Overview](#algorithms)
 
 
 
@@ -36,7 +37,7 @@ A search problem can be defined formally as follows:
 
 
 <a name="algorithms"></a>
-## 3. Search Algorithms
+## 4. Search Algorithms
 A search algorithm takes a search problem as input and returns either a solution, or indication of failure. In this project, I utilized search tree over the state space graph. Each node in this tree represents a cell in the maze, and the connections between nodes (edges) represent the possible moves. The root of the tree represents the problem's initial state.
 
 ![(1, 1)](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/98fbb387-0ca7-466d-96ca-6ff5ccabbf20)
@@ -52,5 +53,28 @@ The second strategy is **Informed Search** also known as heuristic search. Withi
 - h(n): The heuristic estimate of the cost from n to the closest goal node. This is where A* integrates knowledge about the problem domain.
 - f(n) = g(n) + h(n): The total estimated cost of the cheapest solution through n. A* uses this function to prioritize which node to explore next.
 
+The heuristic function of this project calculates the Manhattan distance from a given cell to the goal cell in the maze. This heuristic is particularly appropriate for a grid-based maze where movements are restricted to four directions: right, left, up, and down. The Manhattan distance is a measure of the absolute linear distance between two points in such a grid, disregarding any obstacles that might be in the way.
+The Manhattan distance between two points \((x_1, y_1)\) and \((x_2, y_2)\) in a grid based path is calculated as:
 
+
+$$
+d = |x_2 - x_1| + |y_2 - y_1|
+$$
+
+where:
+
+- \(d\) is the Manhattan distance,
+- \((x_1, y_1)\) are the coordinates of the first point,
+- \((x_2, y_2)\) are the coordinates of the second point.
+
+
+<a name="module"></a>
+## 5. Modules Overview
+###  5.1. maze module
+The core functionality of this module lies in its ability to generate random mazes by leveraging a modified depth-first search (DFS) algorithm, popular for its simplicity and capacity to craft complex mazes. It can also solve mazes using a variety of algorithms that are integrated from the agent module. 
+The Maze class encapsulates the logic for maze generation, including methods for creating the maze, identifying valid actions within it, and drawing the maze using tkinter for visualization. Additionally, it employs heuristic functions to facilitate the solving process, 
+###  5.2. agent module
+The Agent module introduces the Agent class, specifically engineered to navigate through mazes. It stands out by utilizing a variety of search algorithms, including Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search, each designed to find a path from an initial state to a goal state within the maze. The Agent class is intricately linked with the Maze instance, which provides the layout of the maze and the mechanics for movement, such as identifying valid actions and determining the outcomes of those actions. Importantly, this module utilizes callback functions within its search algorithms for real-time updates to the GUI, enhancing the user interface experience. Through the integration of essential data structures like Queue and MinHeap, the Agent class efficiently executes search algorithms, making it a cornerstone for interactive maze navigation and solution visualization.
+###  5.3. dataStructure module
+The Data Structure module is fundamental to supporting algorithmic operations, particularly those related to search algorithms, by providing robust implementations of Queue and MinHeap data structures. The Queue class adheres to the First In, First Out (FIFO) principle, facilitating operations like enqueueing to add elements to the queue's end and dequeueing to remove elements from the front, essential for breadth-first search processes. On the other hand, the MinHeap class implements a min-heap structure, optimizing priority queue operations with efficient minimum value retrieval. This is crucial for algorithms like A* search, where priority is given to paths with lower costs. Through these implementations, the module ensures that search algorithms can be executed efficiently, with quick access to and manipulation of data as required by the algorithms' logic.
 
