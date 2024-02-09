@@ -1,5 +1,5 @@
 # Maze Navigator Agent
-***Solving Problems by Searching*** is a fundamental concept in the field of Artificial Intelligence that involves finding solutions to problems by systematically exploring possible states and actions. This approach is foundational to understanding how AI systems can be designed to make decisions, solve puzzles, plan strategies, and navigate through complex environments. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting point to the target using both informed and uninformed search algorithms.
+***Solving Problems by Searching*** is a fundamental concept in the field of Artificial Intelligence that  involves finding a sequence of actions or steps that leads from an initial state to a goal state. This approach is widely used in various domains such as robotics, game playing, pathfinding, and automated planning. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting point to the target using both informed and uninformed search algorithms.
 
 
 ![Image of a person in the middle of a maze](https://github.com/PeymanKh/Maze-solver-Agent/assets/118134658/0b002b9d-99ea-462e-990e-399989c062b8)
@@ -7,7 +7,7 @@
 ## Table of Contents
 - [1. Rational Agent](#agent)
 - [2. Environment](#environment)
-- [3. Solving Problems by Searching](#search)
+- [3. Search Problem](#search)
 
 
 
@@ -23,5 +23,13 @@ The entire universe could be considered as the environment, but practically spea
 
 
 <a name="search"></a>
-## 3. Solving Problems by Searching
+## 3. Search Problem
+A search problem can be defined formally as follows:
+1. State Space: A set of all possible states of the problem.
+2. Initial State: The starting point of the problem, where the search begins.
+3. Goal state(s): The state or states that represent a solution to the problem.
+4. Actions: The actions available to the agent. Given a state "s", ACTIONS(s) returns a finite set of actions that can be executed in "s".
+5. Transition Model: Describes what each action does. RESULT(s, a) returns the state that results from doing action "a" in state "s".
+6. Search Algorithm: The method used to explore the state space. It systematically checks states, expanding them to discover new states until the goal is reached.
+
 
