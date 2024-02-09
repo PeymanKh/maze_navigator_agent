@@ -8,6 +8,8 @@
 - [1. Rational Agent](#agent)
 - [2. Environment](#environment)
 - [3. Search Problem](#search)
+- [4. Search Algorithms](#algorithms)
+
 
 
 
@@ -31,5 +33,12 @@ A search problem can be defined formally as follows:
 4. Actions: The actions available to the agent. Given a state "s", ACTIONS(s) returns a finite set of actions that can be executed in "s".
 5. Transition Model: Describes what each action does. RESULT(s, a) returns the state that results from doing action "a" in state "s".
 6. Search Algorithm: The method used to explore the state space. It systematically checks states, expanding them to discover new states until the goal is reached.
+
+
+<a name="algorithms"></a>
+## 3. Search Algorithms
+A search algorithm takes a search problem as input and returns either a solution, or indication of failure. In this project, I utilized search tree over the state space graph. Each node in this tree represents a cell in the maze, and the connections between nodes (edges) represent the possible moves. The root of the tree represents the problem's initial state.
+
+![(1, 1)](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/98fbb387-0ca7-466d-96ca-6ff5ccabbf20)
 
 
