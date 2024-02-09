@@ -47,7 +47,10 @@ The first strategy is **Uninformed Search** also known as blind search. In these
 * 2- Depth-First Search (DFS): This algorithm explores as far as possible along each branch before backtracking. It's memory-efficient but doesn't guarantee the shortest path.
 ![DFS & BFS](https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/3dee7b5e-9ade-49e7-8643-e24a9a7a480a)
 
-The second strategy is **Informed Search** also known as heuristic search.
+The second strategy is **Informed Search** also known as heuristic search. Within this approach, the agent utilizes additional knowledge about the state space to efficiently find the solution. Unlike uninformed search strategies that explore the search space without any direction, informed strategies use heuristics to guide the search process towards the goal more quickly. A* (A_star) is a  widely used informed search algorithm estimates the cost of reaching the goal with heuristic function.
+- g(n):  The cost of the path from the start node to node n.
+- h(n): The heuristic estimate of the cost from n to the closest goal node. This is where A* integrates knowledge about the problem domain.
+- f(n) = g(n) + h(n): The total estimated cost of the cheapest solution through n. A* uses this function to prioritize which node to explore next.
 
 
 
