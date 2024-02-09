@@ -1,7 +1,6 @@
 # Maze Navigator Agent
 ***Solving Problems by Searching*** is a fundamental concept in the field of Artificial Intelligence that  involves finding a sequence of actions or steps that leads from an initial state to a goal state. This approach is widely used in various domains such as robotics, game playing, pathfinding, and automated planning. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting point to the target using both informed and uninformed search algorithms.
 
-
 ![Image of a person in the middle of a maze](https://github.com/PeymanKh/Maze-solver-Agent/assets/118134658/0b002b9d-99ea-462e-990e-399989c062b8)
 
 ## Table of Contents
@@ -10,6 +9,8 @@
 - [3. Search Problem](#search)
 - [4. Search Algorithms](#algorithms)
 - [5. Modules Overview](#algorithms)
+- [6. How to Run The App](#app)
+- [7. Reference](#credits)
 
 
 
@@ -83,3 +84,11 @@ The UI module harnesses the tkinter library to offer a graphical user interface 
 This module is where everything begins for the maze solver application. It introduces a class called MainApp that gets everything ready for users to interact with the maze. When MainApp starts, it sets up a visual interface for the maze, where users can create mazes, pick how they want to solve them, and see the solution unfold step by step. 
 
 
+<a name="app"></a>
+## 6. How to Run The App
+Ensure you have Python 3 installed on your computer. You should download five modules and save them in a single folder. Any integrated development environment (IDE) can be used to run the codes, and you can view the application by executing the main.py code.
+
+
+<a name="credits"></a>
+## 7. Reference
+Russell, S., & Norvig, P. (1995). ***Artificial Intelligence: A Modern Approach***.
