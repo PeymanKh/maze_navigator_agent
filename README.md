@@ -3,3 +3,18 @@
 
 ![Image of a person in the middle of a maze](https://github.com/PeymanKh/Maze-solver-Agent/assets/118134658/0b002b9d-99ea-462e-990e-399989c062b8)
 
+## Table of Contents
+
+- [Rational Agent](#agent)
+- [Environment](#environment)
+
+
+
+<a name="agent"></a>
+## Rational Agent 
+Different people approach AI with different goals in mind. Here the main question is do you want to model humans or try to achieve the optimal results? 
+According to what we call the standard model, AI is concerned mainly with rational agent which takes the best possible action in a situation. A rational agent is any entity that can perceive its environment through sensors and acts upon that environment using actuators. The key characteristic of a rational agent is its ability to make decisions or choose actions that maximize its chances of achieving a certain goal or set of goals. Rationality, in this context, means that given a set of perceptions and a knowledge base, the agent will perform an action that is expected to bring about the best outcome according to a specific performance measure. This measure can vary depending on the agent's objectives, such as maximizing utility, minimizing cost, or achieving a particular state.
+Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems. They can operate in a variety of environments and are designed to optimize their performance based on the principles of rationality, which involve selecting the best available option considering the given information and any constraints.
+
+<a name="environment"></a>
+## Environments
