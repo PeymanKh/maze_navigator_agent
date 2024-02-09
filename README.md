@@ -1,20 +1,13 @@
 # Maze Navigator Agent
 ***Solving Problems by Searching*** is a fundamental concept in the field of Artificial Intelligence that involves finding solutions to problems by systematically exploring possible states and actions. This approach is foundational to understanding how AI systems can be designed to make decisions, solve puzzles, plan strategies, and navigate through complex environments. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting point to the target using both informed and uninformed search algorithms.
 
-## Table of Contents
-
-- [Rational Agent](#agent)
-- [Environment](#environment)
-- [Solving Problems by Searching](#search)
-
 
 ![Image of a person in the middle of a maze](https://github.com/PeymanKh/Maze-solver-Agent/assets/118134658/0b002b9d-99ea-462e-990e-399989c062b8)
 
 ## Table of Contents
-
-- [Rational Agent](#agent)
-- [Environment](#environment)
-- [Solving Problems by Searching](#search)
+- [1. Rational Agent](#agent)
+- [2. Environment](#environment)
+- [3. Solving Problems by Searching](#search)
 
 
 
@@ -31,4 +24,4 @@ The entire universe could be considered as the environment, but practically spea
 
 <a name="search"></a>
 ## 3. Solving Problems by Searching
-![Image of an algorithm](https://github.com/PeymanKh/Maze-solver-Agent/assets/118134658/71880469-2da9-4cfd-a09f-c7f006a5e69b)
+
