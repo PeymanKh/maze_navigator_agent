@@ -1,32 +1,29 @@
 # Maze Navigator Agent
-***Solving Problems by Searching*** is a fundamental concept in the field of Artificial Intelligence that  involves finding a sequence of actions or steps that leads from an initial state to a goal state. This approach is widely used in various domains such as robotics, game playing, pathfinding, and automated planning. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting point to the target using both informed and uninformed search algorithms.
+
+Solving Problems by Searching is a fundamental concept in the field of Artificial Intelligence which involves finding a sequence of actions or steps that leads from an initial state to a goal state. This approach is widely used in various domains such as robotics, game playing, pathfinding, and automated planning. In this project, I developed a maze generator that creates a unique maze on each run, along with an agent that finds its way from the starting state to the target state using both informed(a_star) and uninformed search(bfs & dfs) algorithms.
 
 https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/dd1261d6-be93-4459-9367-ef174ec6d762
-
 
 ## Table of Contents
 - [1. Rational Agent](#agent)
 - [2. Environment](#environment)
 - [3. Search Problem](#search)
 - [4. Search Algorithms](#algorithms)
-- [5. Modules Overview](#algorithms)
+- [5. Files Overview](#algorithms)
 - [6. How to Run The App](#app)
 - [7. Reference](#credits)
 
-
-
-
 <a name="agent"></a>
 ## 1. Rational Agent 
-Different people approach AI with different goals in mind. Here, the main question is: do you want to model humans or try to achieve optimal results? According to what we call the standard model, AI is concerned mainly with rational agents, which take the best possible action in a given situation. A rational agent is any entity that can perceive its environment through sensors and act upon that environment using actuators. The key characteristic of a rational agent is its ability to make decisions or choose actions that maximize its chances of achieving a certain goal or set of goals. Rationality, in this context, means that given a set of perceptions and a knowledge base, the agent will perform an action that is expected to bring about the best outcome according to a specific performance measure. This measure can vary depending on the agent's objectives, such as maximizing utility, minimizing cost, or achieving a particular state. Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems.
+A rational agent, in the context of artificial intelligence and decision theory, is an entity that acts to achieve the best outcome or, when there is uncertainty, the best expected outcome based on its knowledge and capabilities. A rational agent can be any entity that can perceive its environment through sensors and act upon that environment using actuators. Rationality, in this context, means that given a set of perceptions and a knowledge base, the agent will perform an action that is expected to bring about the best outcome according to a specific performance measure. This measure can vary depending on the agent's objectives, such as maximizing utility, minimizing cost, or achieving a particular state. Rational agents can be simple or complex, ranging from automated thermostats to sophisticated robotic systems.
 
 <a name="environment"></a>
 ## 2. Environment
-The entire universe could be considered as the environment, but practically speaking, it's only the part of the universe around the agent that can influence or be influenced by the agent's actions. Environments can be physical, like a robot navigating a room, or virtual, like a software agent operating within a computer system. They can also vary in terms of their properties, such as being predictable or unpredictable. The complexity of an agent's behavior and its decision-making process are often directly related to the complexity of its environment. Understanding the environment is crucial for designing an agent that can effectively achieve its goals within that context.
+The entire universe could be considered as the environment, but practically speaking, it's only the part of the universe around the agent that can influence or be influenced by the agent's actions. Environments can be physical, like a robot navigating a room, or virtual, like a software agent predicting the stock market. The complexity of an agent's behavior and its decision-making process are often directly related to the complexity of its environment. Understanding the environment is crucial for designing an agent that can effectively achieve its goals within that context.
 
 <a name="search"></a>
 ## 3. Search Problem
-A search problem can be defined formally as follows:
+Technically, a search problem can be defined formally as follows:
 
 1. State Space: A set of all possible states of the problem.
 2. Initial State: The starting point of the problem, where the search begins.
@@ -47,9 +44,9 @@ A search algorithm takes a search problem as input and returns either a solution
 Throughout the project's development, two distinct search strategies were applied to systematically expand from the current state towards discovering new states until the goal was achieved. The first strategy, Uninformed Search (also known as blind search), relies on the absence of additional information about the state space beyond the current state. This strategy encompasses two primary algorithms:
 
 
-1. Breadth-First Search (BFS): BFS operates by exploring the state space horizontally, processing all states at a certain depth before proceeding to states at the next level of depth. This methodical approach ensures that the shortest path, in terms of the number of steps taken, is identified. This characteristic of BFS makes it particularly useful in scenarios where the path length to the goal is of primary concern, as it guarantees the discovery of the shortest path if one exists.
+1. ***Breadth-First Search (BFS)***: BFS operates by exploring the state space horizontally, processing all states at a certain depth before proceeding to states at the next level of depth. This methodical approach ensures that the shortest path, in terms of the number of steps taken, is identified. This characteristic of BFS makes it particularly useful in scenarios where the path length to the goal is of primary concern, as it guarantees the discovery of the shortest path if one exists.
 
-2. Depth-First Search (DFS): In contrast, DFS delves deep into the state space, prioritizing the exploration of as far along each branch as possible before resorting to backtracking. This approach is known for its memory efficiency, as it does not require storing all expanded nodes at a given depth, unlike BFS. However, the trade-off is that DFS does not inherently guarantee finding the shortest path to the goal. Its tendency to explore deep into the state space without regard for proximity to the goal can lead to finding a solution that, while valid, may not be optimal in terms of path length.
+2. ***Depth-First Search (DFS)***: In contrast, DFS delves deep into the state space, prioritizing the exploration of as far along each branch as possible before resorting to backtracking. This approach is known for its memory efficiency, as it does not require storing all expanded nodes at a given depth, unlike BFS. However, the trade-off is that DFS does not inherently guarantee finding the shortest path to the goal. Its tendency to explore deep into the state space without regard for proximity to the goal can lead to finding a solution that, while valid, may not be optimal in terms of path length.
 
 
 > DFS is favored for its lower memory usage, as it does not require storing all sibling nodes at each level to navigate a path, making it ideal for problems with deep solution paths or vast state spaces. In contrast, BFS excels in situations where finding the shortest path is paramount due to its systematic level-by-level exploration, albeit at a higher memory cost. The selection between DFS and BFS hinges on the application's specific needs: BFS is the go-to for scenarios where the shortest path is essential, while DFS is better suited for cases with unknown solution depths or extensive search spaces.
@@ -81,17 +78,17 @@ This formula computes the sum of the absolute differences of their Cartesian coo
 > The effectiveness of A* depend on the heuristic function h(n). an accurate h(n) can dramatically reduce the search space, allowing A* to find the optimal path more quickly than uninformed search algorithms. However, the choice of h(n) s crucial; an overly optimistic heuristic can lead to inefficient searches, while a pessimistic one may not provide sufficient guidance to improve upon uninformed strategies. The beauty of A* lies in its flexibility and the balance it strikes between exploring unvisited nodes and extending paths from known nodes, making it highly effective for a wide range of problems where the goal is to find the most cost-effective path.
 
 <a name="module"></a>
-## 5. Modules Overview
+## 5. Files Overview
 ###  5.1. maze module
-The core functionality of this module lies in its ability to generate random mazes by leveraging a modified depth-first search (DFS) algorithm, popular for its simplicity and capacity to craft complex mazes. It can also solve mazes using a variety of algorithms that are integrated from the agent module. The Maze class encapsulates the logic for maze generation, including methods for creating the maze, identifying valid actions within it, and drawing the maze using tkinter for visualization. Additionally, it employs heuristic functions to facilitate the solving process.
+This module generates random mazes using a modified DFS algorithm and solves them with algorithms from the agent module. The Maze class within the module handles generation, valid actions, visualization with tkinter, and employs heuristic functions for solving.
 ###  5.2. agent module
-The Agent module introduces the Agent class, specifically engineered to navigate through mazes. It stands out by utilizing a variety of search algorithms, including Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search, each designed to find a path from an initial state to a goal state within the maze. The Agent class is intricately linked with the Maze instance, which provides the layout of the maze and the mechanics for movement, such as identifying valid actions and determining the outcomes of those actions. Importantly, this module utilizes callback functions within its search algorithms for real-time updates to the GUI, enhancing the user interface experience. Through the integration of essential data structures like Queue and MinHeap, the Agent class efficiently executes search algorithms, making it a cornerstone for interactive maze navigation and solution visualization.
+The Agent module features the Agent class, designed to navigate mazes using DFS, BFS, and A* search algorithms. It interacts with the Maze instance to identify valid actions and outcomes. The module uses callbacks for real-time GUI updates and integrates Queue and MinHeap data structures for efficient search execution.
 ###  5.3. dataStructure module
-The Data Structure module is fundamental to supporting algorithmic operations. The Queue class adheres to the First In, First Out (FIFO) principle, facilitating operations like enqueueing to add elements to the queue's end and dequeueing to remove elements from the front, essential for breadth-first search processes. On the other hand, the MinHeap class implements a min-heap structure, optimizing priority queue operations with efficient minimum value retrieval. This is crucial for algorithms like A* search, where priority is given to paths with lower costs. Through these implementations, the module ensures that search algorithms can be executed efficiently, with quick access to and manipulation of data as required by the algorithms' logic.
+The Data Structure module used to customize Queue and Minheap data structures for the project. The Queue class follows FIFO principles, essential for BFS, by allowing enqueue and dequeue operations. The MinHeap class optimizes priority queue operations, crucial for A* search, by efficiently retrieving the minimum value.
 ###  5.4. ui module
-The UI module harnesses the tkinter library to offer a graphical user interface that allows users to engage directly with the maze-solving process. It empowers users to generate mazes, select a solving algorithm from options like Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search, and visually track the algorithm's progress in real-time as it works to find a solution. The MazeUI class, central to this module, sets up the main application window, incorporates a canvas for maze drawing, and integrates buttons for maze generation and solving.
+The UI module provides a graphical interface for maze-solving. Users can generate mazes, select solving algorithms (DFS, BFS, A*), and visually track the algorithm's progress in real-time. The MazeUI class sets up the application window, includes a canvas for maze drawing, and integrates buttons for maze generation and solving.
 ### 5.5. main module
-This module is where everything begins for the maze solver application. It introduces a class called MainApp that gets everything ready for users to interact with the maze. When MainApp starts, it sets up a visual interface for the maze, where users can create mazes, pick how they want to solve them, and see the solution unfold step by step.
+This module is where everything begins for the maze solver application. When MainApp starts, it sets up a visual interface for the maze, where users can create mazes, pick how they want to solve them, and see the solution unfold step by step.
 
 
 <a name="app"></a>
