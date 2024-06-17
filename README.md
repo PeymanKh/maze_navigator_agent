@@ -117,6 +117,7 @@ pip install -r requirements.txt
 
 Run the Application
 ```bash
+cd codes
 python3 main.py
 ```
 
