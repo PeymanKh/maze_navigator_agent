@@ -3,8 +3,11 @@ This module provides a graphical user interface for visualizing and interacting 
 
 It leverages the tkinter library to create a window where users can generate mazes, choose a solving algorithm,
 and visually follow the algorithm's progress towards solving the maze.
-"""
 
+Author: Peyman Kh
+Date: 07/Feb/2024
+"""
+# Import libraries
 import tkinter as tk
 from maze import Maze
 from agent import Agent
@@ -12,8 +15,15 @@ import time
 
 
 class MazeUI:
-    """
-        A class to create and manage the maze solving GUI.
+    """A class to create and manage the maze solving GUI."""
+
+    def __init__(self, rows=30, cols=30) -> None:
+        """
+        Initializes the MazeUI class with default or specified rows and columns, sets up the GUI components.
+
+        Parameters:
+            - rows (int): The number of rows in the maze (Defaults to 30).
+            - cols (int): The number of columns in the maze (Defaults to 30).
 
         Attributes:
             - agent (Agent): An instance of the Agent class for solving the maze.
@@ -28,14 +38,6 @@ class MazeUI:
             - solve_button (tk.Button): Button to solve the current maze.
             - algorithm (tk.StringVar): A tkinter variable holding the selected algorithm's name.
             - algorithm_menu (tk.OptionMenu): Dropdown menu for selecting the solving algorithm.
-    """
-    def __init__(self, rows=30, cols=30) -> None:
-        """
-            Initializes the MazeUI class with default or specified rows and columns, sets up the GUI components.
-
-            Args:
-                - rows (int): The number of rows in the maze (Defaults to 30).
-                - cols (int): The number of columns in the maze (Defaults to 30).
         """
         self.agent = None
         self.root = tk.Tk()
@@ -56,9 +58,12 @@ class MazeUI:
         self.algorithm_menu = tk.OptionMenu(self.root, self.algorithm, "DFS", "BFS", "A*")
         self.algorithm_menu.pack()
 
-    def draw_maze(self) -> None:
+    def draw_maze(self):
         """
-            Draws the maze on the canvas, including all walls and the initial and goal states.
+        Draws the maze on the canvas, including all walls and the initial and goal states.
+
+        Returns:
+            - None
         """
         self.canvas.delete("all")  # Clear the existing maze
         for x in range(1, self.maze.rows + 1):
@@ -82,28 +87,27 @@ class MazeUI:
 
     def draw_state(self, state, color):
         """
-            Draws a single state (cell) in the maze with a specified color.
+        Draws a single state (cell) in the maze with a specified color.
 
-            Args:
-                - state (tuple): The state (cell) to draw, represented as (row, column).
-                - color (str): The color to use for the state (cell).
+        Parameters:
+            - state (tuple): The state (cell) to draw, represented as (row, column).
+            - color (str): The color to use for the state (cell).
+
+        Returns:
+            - None
         """
         x, y = state
         x1, y1 = (x - 1) * 20, (y - 1) * 20
         self.canvas.create_rectangle(x1 + 2, y1 + 2, x1 + 18, y1 + 18, fill=color, outline="")
 
     def generate_and_draw_maze(self):
-        """
-            Generates a new maze and draws it on the canvas.
-        """
+        """Generates a new maze and draws it on the canvas."""
         self.maze = Maze(self.rows, self.cols)
         self.maze.create_maze()
         self.draw_maze()
 
     def solve_maze(self):
-        """
-            Solves the maze using the selected algorithm and visualizes the solution path.
-        """
+        """Solves the maze using the selected algorithm and visualizes the solution path."""
         self.draw_maze()  # Clear any previous paths or highlights
         self.agent = Agent(self.maze)
         chosen_algorithm = self.algorithm.get()
@@ -119,10 +123,10 @@ class MazeUI:
 
     def update_gui_with_current_state(self, current_state):
         """
-            Updates the GUI to reflect the current state during the solving process, with a delay for visualization.
+        Updates the GUI to reflect the current state during the solving process, with a delay for visualization.
 
-            Args:
-                - current_state (tuple): The current state (cell) being processed by the solving algorithm.
+        Parameters:
+            - current_state (tuple): The current state (cell) being processed by the solving algorithm.
         """
         # Check if the current state is not the initial or goal state before coloring it blue
         if current_state != self.initial_state and current_state != self.goal_state:
@@ -135,10 +139,10 @@ class MazeUI:
 
     def redraw_final_path(self, solution_path):
         """
-            Redraws the solution path on the maze after the maze has been solved.
+        Redraws the solution path on the maze after the maze has been solved.
 
-            Args:
-                - solution_path (list): The path from the initial to the goal state as a list of states (cells).
+        Parameters:
+            - solution_path (list): The path from the initial to the goal state as a list of states (cells).
         """
         if solution_path is None:
             return
@@ -149,7 +153,5 @@ class MazeUI:
             time.sleep(0.05)
 
     def run(self):
-        """
-            Starts the tkinter main event loop to run the application.
-        """
+        """Starts the tkinter main event loop to run the application."""
         self.root.mainloop()

@@ -1,42 +1,39 @@
 """
 This module implements a maze generator and solver using tkinter for visualization. The maze is generated using a
-modified depth-first search algorithm. Each cell in the maze can have walls to its right, left, up, or down. The solver
-aims to find a path from the start to the end of the maze using various algorithms though the agent module.
-"""
+modified depth-first search algorithm. Each cell in the maze can have walls to its right, left, up, or down. The
+solver aims to find a path from the start to the end of the maze using various algorithms though the agent module.
 
+Methods:
+    - create_maze(): Generates the maze by removing walls between cells using a depth-first search algorithm.
+    - _continues_straight_path(cell1, cell2): Checks if moving from cell1 to cell2 continues a straight path.
+    - _blocked_neighbours(cell): Finds all neighbouring cells of a given cell that have all walls intact.
+    - _remove_wall_in_between(cell1, cell2): Removes the wall between two adjacent cells.
+    - _draw_maze(): Creates a tkinter window and draws the maze.
+    - valid_actions(cell): Returns a list of valid actions for a given cell.
+    - result_of_action(cell, action): Returns the cell resulting from taking an action from a given cell.
+    - heuristic(cell, goal): Calculates the Manhattan distance from a cell to the goal.
+    - run(): Generates the maze and displays it using tkinter.
+
+Author: Peyman Kh
+Date: 07/Feb/2024
+"""
+# Import Libraries
 import tkinter as tk  # For GUI creation.
 import random  # For random selections, necessary in maze generation.
 
 
 class Maze:
-    """
-        A class representing a maze with cells that can be navigated through by removing walls between them.
-
-        Attributes:
-            - rows (int): The number of rows in the maze.
-            - cols (int): The number of columns in the maze.
-            - maze_map (dict): A dictionary mapping cell coordinates to a dictionary of walls ('R', 'U', 'D', 'L') and
-                              their statuses (True if removed).
-            - states (list): A list to keep track of the cells visited during maze generation for backtracking.
-
-        Methods:
-            - create_maze(): Generates the maze by removing walls between cells using a depth-first search algorithm.
-            - _continues_straight_path(cell1, cell2): Checks if moving from cell1 to cell2 continues a straight path.
-            - _blocked_neighbours(cell): Finds all neighbouring cells of a given cell that have all walls intact.
-            - _remove_wall_in_between(cell1, cell2): Removes the wall between two adjacent cells.
-            - _draw_maze(): Creates a tkinter window and draws the maze.
-            - valid_actions(cell): Returns a list of valid actions for a given cell.
-            - result_of_action(cell, action): Returns the cell resulting from taking an action from a given cell.
-            - heuristic(cell, goal): Calculates the Manhattan distance from a cell to the goal.
-            - run(): Generates the maze and displays it using tkinter.
-    """
-    def __init__(self, rows=30, cols=30) -> None:
+    """A class representing a maze with cells that can be navigated through by removing walls between them."""
+    def __init__(self, rows=30, cols=30):
         """
-            Initializes the Maze with a specified number of rows and columns.
+        Initializes the Maze with a specified number of rows and columns.
 
-            Args:
-                - rows (int): The number of rows in the maze (default is 30).
-                - cols (int): The number of columns in the maze (default is 30).
+        Parameters:
+            - rows (int): The number of rows in the maze (default is 30).
+            - cols (int): The number of columns in the maze (default is 30).
+
+        Returns:
+            - None
         """
         self.rows = rows
         self.cols = cols
@@ -44,10 +41,13 @@ class Maze:
                          for y in range(1, cols + 1)}
         self.states = []
 
-    def create_maze(self) -> None:
+    def create_maze(self):
         """
-            Generates the maze layout by randomly removing walls between cells to create a path, using
-            a depth-first search.
+        Generates the maze layout by randomly removing walls between cells to create a path, using a
+        depth-first search algorithm.
+
+        Returns:
+            - None
         """
         stack = [(1, 1)]   # Start with a stack containing the initial cell.
 
@@ -80,16 +80,16 @@ class Maze:
             if not neighbors:
                 stack.pop()
 
-    def _continues_straight_path(self, cell1, cell2) -> bool:
+    def _continues_straight_path(self, cell1, cell2):
         """
-            Determines if moving from cell1 to cell2 would continue a straight path from the last state.
+        Determines if moving from cell1 to cell2 would continue a straight path from the last state.
 
-            Args:
-                - cell1 (tuple): The current cell coordinates.
-                - cell2 (tuple): The next cell coordinates.
+        Parameters:
+            - cell1 (tuple): The current cell coordinates.
+            - cell2 (tuple): The next cell coordinates.
 
-            Returns:
-                - bool: True if moving to cell2 continues a straight path from the last cell, False otherwise.
+        Returns:
+            - bool: True if moving to cell2 continues a straight path from the last cell, False otherwise.
         """
 
         # If no cells have been visited yet, can't continue a straight path.
@@ -107,15 +107,15 @@ class Maze:
         # Return True if the direction to the next cell is the same as the last move (straight path).
         return direction == next_direction
 
-    def _blocked_neighbours(self, cell) -> list:
+    def _blocked_neighbours(self, cell):
         """
-            Finds all neighbouring cells of the given cell that have all walls intact.
+        Finds all neighbouring cells of the given cell that have all walls intact.
 
-            Args:
-                - cell (tuple): The cell coordinates.
+        Parameters:
+            - cell (tuple): The cell coordinates.
 
-            Returns:
-                - list: A list of coordinates of all blocked neighbours.
+        Returns:
+            - list: A list of coordinates of all blocked neighbours.
         """
         directions = {'R': (1, 0), 'L': (-1, 0), 'U': (0, -1), 'D': (0, 1)}
         neighbors = []
@@ -134,11 +134,14 @@ class Maze:
 
     def _remove_wall_in_between(self, cell1, cell2):
         """
-            Removes the wall between two adjacent cells.
+        Removes the wall between two adjacent cells.
 
-            Args:
-                - cell1 (tuple): The coordinates of the first cell.
-                - cell2 (tuple): The coordinates of the second cell.
+        Parameters:
+            - cell1 (tuple): The coordinates of the first cell.
+            - cell2 (tuple): The coordinates of the second cell.
+
+        Returns:
+            - None
         """
         x1, y1 = cell1
         x2, y2 = cell2
@@ -161,10 +164,10 @@ class Maze:
 
     def _draw_maze(self):
         """
-            Creates a tkinter window and draws the current maze layout.
+        Creates a tkinter window and draws the current maze layout.
 
-            Returns:
-                - tkinter.Tk: The tkinter root window for the maze.
+        Returns:
+            - tkinter.Tk: The tkinter root window for the maze.
         """
         root = tk.Tk()  # Create the main window.
         root.title("Maze-Solver")  # Set the window title.
@@ -191,16 +194,15 @@ class Maze:
 
         return root
 
-    def valid_actions(self, cell) -> list:
+    def valid_actions(self, cell):
         """
-            Determines the valid actions that can be taken from a given cell, based on the walls
-            that have been removed.
+        Determines the valid actions that can be taken from a given cell, based on the walls that have been removed.
 
-            Args:
-                - cell (tuple): The coordinates of the cell.
+        Parameters:
+            - cell (tuple): The coordinates of the cell.
 
-            Returns:
-                - list: A list of actions ['R', 'L', 'U', 'D'] that are valid to take from the given cell.
+        Returns:
+            - list: A list of actions ['R', 'L', 'U', 'D'] that are valid to take from the given cell.
         """
         valid_actions = []
 
@@ -215,16 +217,16 @@ class Maze:
         return valid_actions
 
     @staticmethod
-    def result_of_action(cell, action) -> tuple:
+    def result_of_action(cell, action):
         """
-            Determines the resulting cell from taking a specified action from a given cell.
+        Determines the resulting cell from taking a specified action from a given cell.
 
-            Args:
-                - cell (tuple): The coordinates of the current cell.
-                - action (str): The action to take ('R', 'L', 'U', 'D').
+        Parameters:
+            - cell (tuple): The coordinates of the current cell.
+            - action (str): The action to take ('R', 'L', 'U', 'D').
 
-            Returns:
-                - tuple: The coordinates of the cell resulting from the action.
+        Returns:
+            - tuple: The coordinates of the cell resulting from the action.
         """
         # Defines the movement vector for each action.
         directions = {'R': (1, 0), 'L': (-1, 0), 'U': (0, -1), 'D': (0, 1)}
@@ -236,27 +238,26 @@ class Maze:
         return cell[0] + dx, cell[1] + dy
 
     @staticmethod
-    def heuristic(cell, goal) -> int:
+    def heuristic(cell, goal):
         """
-            Calculate the Manhattan distance from a given cell to the goal.
-            This heuristic is appropriate for a grid where you can move in four directions.
+        Calculate the Manhattan distance from a given cell to the goal. This heuristic is appropriate for a grid
+        where you can move in four directions.
 
-            Args:
-                - cell (tuple): The current cell coordinates.
-                - goal (tuple): The goal cell coordinates.
+        Parameters:
+            - cell (tuple): The current cell coordinates.
+            - goal (tuple): The goal cell coordinates.
 
-            Returns:
-                - int: The Manhattan distance from the current cell to the goal.
+        Returns:
+            - int: The Manhattan distance from the current cell to the goal.
         """
 
         # The Manhattan distance is the sum of the absolute differences in the x and y coordinates.
         return abs(cell[0] - goal[0]) + abs(cell[1] - goal[1])
 
-    def run(self) -> None:
-        """
-        Generates the maze and displays it using tkinter. This is the main method to start
-        the maze generation and visualization process.
-        """
+    def run(self):
+        """Generates the maze and displays it using tkinter. This is the main
+           method to start the maze generation and visualization process."""
+
         self.create_maze()  # Calls the method to generate the maze.
         root = self._draw_maze()  # Draws the maze on a tkinter canvas and gets the root window.
         root.mainloop()  # Enters the tkinter main event loop to display the window and interact with the user.

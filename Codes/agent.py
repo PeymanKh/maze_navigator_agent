@@ -2,44 +2,48 @@
 This module defines the Agent class responsible for navigating through mazes.
 
 The Agent class utilizes different search algorithms to find a path from a given initial state to a goal state within
-the maze. It supports Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search algorithms. Each method is
-designed to interact with a Maze instance, which provides the maze's layout and the mechanics for moving within it,
-such as identifying valid actions and the result of those actions.
+the maze. It supports Depth-First Search (DFS), Breadth-First Search (BFS), and A* Search algorithms.
 Callback functions are used within search algorithms for real-time GUI updates, which can be useful for UI.
-"""
 
-from dataStructure import Queue, MinHeap  # Import necessary data structures for the search algorithms.
+Methods:
+    - dfs(current_state, goal_state): Performs Depth-First Search (DFS) from the current state to the goal state.
+    - bfs(current_state, goal_state): Performs Breadth-First Search (BFS) from the current state to the goal state.
+    - a_star(current_state, goal_state): Performs A* (A Start)from the current state to the goal state.
+
+Author: Peyman Kh
+Date: 08/Feb/2024
+"""
+# Import libraries
+from dataStructure import Queue, MinHeap
 
 
 class Agent:
-    """
-        Represents an agent navigating through a maze.
-
-        Attributes:
-            - maze (Maze): An instance of a Maze class that this agent will navigate.
-    """
-    def __init__(self, maze) -> None:
+    """Represents an agent navigating through a maze."""
+    def __init__(self, maze):
         """
-            - Initializes the Agent with a maze to solve.
+        Initializes the Agent with a maze to solve.
 
-            - Args:
-                - maze (Maze): The maze instance that the agent will navigate.
+        Parameters:
+            - maze (Maze): The maze instance that the agent will navigate.
+
+        Returns:
+            - None
         """
         self.maze = maze
 
-    def dfs(self, current_state, goal_state, callback, visited=None) -> list or None:
+    def dfs(self, current_state, goal_state, callback, visited=None):
         """
-            Performs Depth-First Search (DFS) from the current state to the goal state.
+        Performs Depth-First Search (DFS) from the current state to the goal state.
 
-            Args:
-                - current_state (tuple): The current state of the agent in the maze.
-                - goal_state (tuple): The goal state that the agent aims to reach.
-                - callback (function): A function to call for updating the GUI.
-                - visited (set, optional): A set of already visited states. Defaults to None.
+        Parameters:
+            - current_state (tuple): The current state of the agent in the maze.
+            - goal_state (tuple): The goal state that the agent aims to reach.
+            - callback (function): A function to call for updating the GUI.
+            - visited (set, optional): A set of already visited states. Defaults to None.
 
-            Returns:
-                - list: The path from the current state to the goal state as a list of states,
-                or None if no path is found.
+        Returns:
+            - list: The path from the current state to the goal state as a list of states,
+                    or None if no path is found.
         """
 
         # Initialize visited set in the first call.
@@ -67,19 +71,20 @@ class Agent:
 
         return None  # Return None if no path is found.
 
-    def bfs(self, initial_state, goal_state, callback) -> list or None:
+    def bfs(self, initial_state, goal_state, callback):
         """
-            Performs Breadth-First Search (BFS) from the initial state to the goal state.
+        Performs Breadth-First Search (BFS) from the initial state to the goal state.
 
-            Args:
-                - initial_state (tuple): The initial state of the agent in the maze.
-                - goal_state (tuple): The goal state that the agent aims to reach.
-                - callback (function): A function to call for updating the GUI.
+        Parameters:
+            - initial_state (tuple): The initial state of the agent in the maze.
+            - goal_state (tuple): The goal state that the agent aims to reach.
+            - callback (function): A function to call for updating the GUI.
 
-            Returns:
-                - list: The path from the initial state to the goal state as a list of states,
-                or None if no path is found.
+        Returns:
+            - list: The path from the initial state to the goal state as a list of states,
+                    or None if no path is found.
         """
+        # Initialize datastructures
         visited = set()
         queue = Queue()
 
@@ -106,18 +111,18 @@ class Agent:
 
         return None  # Return None if no path is found.
 
-    def a_star(self, initial_state, goal_state, callback) -> list or None:
+    def a_star(self, initial_state, goal_state, callback):
         """
-            Performs A* Search from the initial state to the goal state.
+        Performs A* Search from the initial state to the goal state.
 
-            Args:
-                - initial_state (tuple): The initial state of the agent in the maze.
-                - goal_state (tuple): The goal state that the agent aims to reach.
-                - callback (function): A function to call for updating the GUI.
+        Parameters:
+            - initial_state (tuple): The initial state of the agent in the maze.
+            - goal_state (tuple): The goal state that the agent aims to reach.
+            - callback (function): A function to call for updating the GUI.
 
         Returns:
-            list: The path from the initial state to the goal state as a list of states,
-            or None if no path is found.
+            - list: The path from the initial state to the goal state as a list of states,
+                    or None if no path is found.
         """
 
         # Use a MinHeap for efficient retrieval of the lowest cost state.
