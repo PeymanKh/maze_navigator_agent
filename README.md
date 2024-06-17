@@ -96,12 +96,12 @@ This module is where everything begins for the maze solver application. When Mai
 
 First, clone the repository to your local machine using the following command:
 ```bash
-git clone git@github.com:PeymanKh/Maze_Navigator_Agent.git
+git clone git@github.com:PeymanKh/maze_navigator_agent.git
 ```
 
 Change to the project directory:
 ```bash
-cd Maze_Navigator_Agent
+cd maze_navigator_agent
 ```
 
 Create and Activate a Virtual Environment
