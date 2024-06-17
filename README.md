@@ -10,8 +10,9 @@ https://github.com/PeymanKh/Maze_Navigator_Agent/assets/118134658/dd1261d6-be93-
 - [3. Search Problem](#search)
 - [4. Search Algorithms](#algorithms)
 - [5. Files Overview](#algorithms)
-- [6. How to Run The App](#app)
-- [7. Reference](#credits)
+- [6. How to Run The Application](#app)
+- [7. Licence](#licence)
+- [8. Reference](#credits)
 
 <a name="agent"></a>
 ## 1. Rational Agent 
@@ -92,11 +93,57 @@ This module is where everything begins for the maze solver application. When Mai
 
 
 <a name="app"></a>
-## 6. How to Run The App
-Ensure you have Python 3 installed on your computer. You should download five modules and save them in a single folder. Any integrated development environment (IDE) can be used to run the codes, and you can view the application by executing the main.py code.
+## 6. How to Run The Application
 
+First, clone the repository to your local machine using the following command:
+```bash
+git clone git@github.com:PeymanKh/Maze_Navigator_Agent.git
+```
+
+Change to the project directory:
+```bash
+cd Maze_Navigator_Agent
+```
+
+Create and Activate a Virtual Environment
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install Required Libraries
+```bash
+pip install -r requirements.txt
+```
+
+Run the Application
+```bash
+python3 main.py
+```
+
+<a name="licence"></a>
+## 7. License
+Copyright (c) [2024] [Peyman Kh]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 <a name="credits"></a>
-## 7. Reference
+## 8. Reference
 Russell, S., & Norvig, P. (1995). ***Artificial Intelligence: A Modern Approach***.
